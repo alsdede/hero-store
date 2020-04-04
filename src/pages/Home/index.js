@@ -1,107 +1,57 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { MdShoppingCart } from 'react-icons/md';
 import { ProductList } from './styles';
+import { formatPrice } from '~/util/format';
+import api from '~/services/api';
+import * as CartActions from '~/store/modules/cart/actions';
 
 export default function Home() {
+  const [products, setProducts] = useState([]);
+  const amount = useSelector(state =>
+    state.cart.reduce((sumAmount, product) => {
+      sumAmount[product.id] = product.amount;
+      return sumAmount;
+    }, {})
+  );
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    async function loadProducts() {
+      const response = await api.get('products');
+
+      const data = response.data.map(product => ({
+        ...product,
+        priceFormatted: formatPrice(product.price),
+      }));
+
+      setProducts(data);
+    }
+    loadProducts();
+  }, []);
+
+  function handleAddProduct(id) {
+    dispatch(CartActions.addToCartRequest(id));
+  }
+
   return (
     <ProductList>
-      <li>
-        <img
-          src="https://static-images.ifood.com.br/image/upload/f_auto,t_medium/pratos/9a3d9da7-1ac5-49ee-a0c3-2668dec8e329/201909241002_2FTR_p.jpg"
-          alt="food"
-          width="200px"
-        />
-        <strong>Comida</strong>
-        <span>R$12,90</span>
-        <button type="button">
-          <div>
-            <MdShoppingCart size={16} color="#fff" />3
-          </div>
-          <span> ADICIONAR AO CARRINHO</span>
-        </button>
-      </li>
+      {products.map(product => (
+        <li key={product.id}>
+          <img src={product.image} alt={product.title} />
+          <strong>{product.title}</strong>
+          <span>{product.priceFormatted}</span>
 
-      <li>
-        <img
-          src="https://static-images.ifood.com.br/image/upload/f_auto,t_medium/pratos/9a3d9da7-1ac5-49ee-a0c3-2668dec8e329/201909241002_2FTR_p.jpg"
-          alt="food"
-          width="200px"
-        />
-        <strong>
-          Comida dasdasda dasd d dsadsa das das das dsadas ddas dadas d
-        </strong>
-        <span>R$12,90</span>
-        <button type="button">
-          <div>
-            <MdShoppingCart size={16} color="#fff" />3
-          </div>
-          <span> ADICIONAR AO CARRINHO</span>
-        </button>
-      </li>
-
-      <li>
-        <img
-          src="https://static-images.ifood.com.br/image/upload/f_auto,t_medium/pratos/9a3d9da7-1ac5-49ee-a0c3-2668dec8e329/201909241002_2FTR_p.jpg"
-          alt="food"
-          width="200px"
-        />
-        <strong>Comida</strong>
-        <span>R$12,90</span>
-        <button type="button">
-          <div>
-            <MdShoppingCart size={16} color="#fff" />3
-          </div>
-          <span> ADICIONAR AO CARRINHO</span>
-        </button>
-      </li>
-
-      <li>
-        <img
-          src="https://static-images.ifood.com.br/image/upload/f_auto,t_medium/pratos/9a3d9da7-1ac5-49ee-a0c3-2668dec8e329/201909241002_2FTR_p.jpg"
-          alt="food"
-          width="200px"
-        />
-        <strong>Comida</strong>
-        <span>R$12,90</span>
-        <button type="button">
-          <div>
-            <MdShoppingCart size={16} color="#fff" />3
-          </div>
-          <span> ADICIONAR AO CARRINHO</span>
-        </button>
-      </li>
-
-      <li>
-        <img
-          src="https://static-images.ifood.com.br/image/upload/f_auto,t_medium/pratos/9a3d9da7-1ac5-49ee-a0c3-2668dec8e329/201909241002_2FTR_p.jpg"
-          alt="food"
-          width="200px"
-        />
-        <strong>Comida</strong>
-        <span>R$12,90</span>
-        <button type="button">
-          <div>
-            <MdShoppingCart size={16} color="#fff" />3
-          </div>
-          <span> ADICIONAR AO CARRINHO</span>
-        </button>
-      </li>
-
-      <li>
-        <img
-          src="https://static-images.ifood.com.br/image/upload/f_auto,t_medium/pratos/9a3d9da7-1ac5-49ee-a0c3-2668dec8e329/201909241002_2FTR_p.jpg"
-          alt="food"
-          width="200px"
-        />
-        <strong>Comida</strong>
-        <span>R$12,90</span>
-        <button type="button">
-          <div>
-            <MdShoppingCart size={16} color="#fff" />3
-          </div>
-          <span> ADICIONAR AO CARRINHO</span>
-        </button>
-      </li>
+          <button type="button" onClick={() => handleAddProduct(product.id)}>
+            <div>
+              <MdShoppingCart size={16} color="#fff" />
+              {amount[product.id] || 0}
+            </div>
+            <span> ADICIONAR AO CARRINHO</span>
+          </button>
+        </li>
+      ))}
     </ProductList>
   );
 }

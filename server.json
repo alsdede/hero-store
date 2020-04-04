@@ -1,0 +1,72 @@
+{
+  "stock": [
+    {
+      "id": 1,
+      "amount": 3
+    },
+    {
+      "id": 2,
+      "amount": 5
+    },
+    {
+      "id": 3,
+      "amount": 2
+    },
+    {
+      "id": 4,
+      "amount": 1
+    },
+    {
+      "id": 5,
+      "amount": 5
+    },
+    {
+      "id": 6,
+      "amount": 10
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "title": "Omelete de abobrinha de forno",
+      "price": 10.99,
+      "description":"Omelete recheado com abobrinha e queijo mussarela. acompanha batata doce e brócolis cozido (temperado com azeite e sal). Aprox: 400g",
+      "image": "https://static-images.ifood.com.br/image/upload/f_auto,t_medium/pratos/9a3d9da7-1ac5-49ee-a0c3-2668dec8e329/201911131552_4WDE_o.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Parafuso ao sugo com filé de frango",
+      "price": 11.99,
+      "description":"Parafuso ao sugo. Acompanha filé de frango grelhado e abobrinha refogada. Aprox: 400g",
+      "image": "https://static-images.ifood.com.br/image/upload/f_auto,t_medium/pratos/9a3d9da7-1ac5-49ee-a0c3-2668dec8e329/201910311919_Ztii_p.jpg"
+    },
+    {
+      "id": 3,
+      "title": "Filé de frango com batata doce",
+      "price": 12.99,
+      "description": "Filés de frango grelhado. Acompanha batata doce em rodelas, brócolis e cenoura cozida (temperados com azeite e sal). Aprox: 400g",
+      "image": "https://static-images.ifood.com.br/image/upload/f_auto,t_medium/pratos/9a3d9da7-1ac5-49ee-a0c3-2668dec8e329/201910181552_PEdA_f.jpg"
+    },
+    {
+      "id": 5,
+      "title": "Carne moída refogada",
+      "price": 12.9,
+      "description":"Carne moída refogada. Acompanha arroz branco, feijão, beterraba e vagem cozidas (temperadas com azeite e sal). Aprox: 400g",
+      "image": "https://static-images.ifood.com.br/image/upload/f_auto,t_medium/pratos/9a3d9da7-1ac5-49ee-a0c3-2668dec8e329/201909191516_2oVW_c.jpg"
+    },
+    {
+      "id": 6,
+      "title": "Feijoada de calabresa",
+      "price": 12.99,
+      "description":"Feijoada preparada com feijão preto e calabresa. Acompanha arroz branco, couve refogada, farofa e banana frita. Aprox: 400g",
+      "image": "https://static-images.ifood.com.br/image/upload/f_auto,t_medium/pratos/9a3d9da7-1ac5-49ee-a0c3-2668dec8e329/201909191455_dRNA_f.jpg"
+    },
+    {
+      "id": 4,
+      "title": "Parmegiana de frango",
+      "price": 14.99,
+      "description":"Frango empanado coberto com queijo mussarela e molho de tomate. Acompanha arroz branco, batata palha e legumes cozidos (cenoura e vagem) temperada com azeite e sal. Aprox: 400g",
+      "image": "https://static-images.ifood.com.br/image/upload/f_auto,t_medium/pratos/9a3d9da7-1ac5-49ee-a0c3-2668dec8e329/201909191443_JSaF_p.jpg"
+    }
+  ]
+}

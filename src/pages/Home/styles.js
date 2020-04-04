@@ -6,6 +6,7 @@ export const ProductList = styled.ul`
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 20px;
   margin-top: 10px;
+  list-style: none;
 
   li {
     display: flex;
@@ -31,7 +32,7 @@ export const ProductList = styled.ul`
       margin-top: 5px;
     }
     > span {
-      font-size: 21x;
+      font-size: 21px;
       font-weight: bold;
       margin: 5px 0 20px;
     }
@@ -60,15 +61,14 @@ export const ProductList = styled.ul`
       align-items: center;
       padding: 12px;
       background: rgba(0, 0, 0, 0.1);
-    }
-    svg {
-      margin-right: 5px;
-    }
-
-    span {
-      flex: 1;
-      text-align: center;
-      font-weight: 400;
+      svg {
+        margin-right: 5px;
+      }
+      span {
+        flex: 1;
+        text-align: center;
+        font-weight: bold;
+      }
     }
   }
 `;
